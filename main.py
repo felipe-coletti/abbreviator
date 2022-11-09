@@ -14,7 +14,7 @@ def abbreviator(element, limit):
           index = i - 5
         else:
           index = i - 4
-        element = '{:,2f} {}'.format(element, tag[index])
+        element = '{:.1f} {}'.format(element, tag[index])
   else:
     while element(limit) == '':
       limit -= 1
