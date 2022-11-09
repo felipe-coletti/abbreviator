@@ -4,9 +4,10 @@ limit = 500
 
 
 def abbreviator(element, limit):
+  index = 4
   if element.isdigit():
-    if len(element) >= 4 and len(element) <= 6:
-      element /= 1000
+    if len(element) >= index and len(element) <= (index + 2):
+      element /= (10 * index)
       element = "{:,2f} mil".format(element)
   else:
     while element(limit) == '':
