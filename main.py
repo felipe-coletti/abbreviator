@@ -1,5 +1,7 @@
 number = 1000
 
+text = ''
+
 limit = 500
 
 tag = ['mil', 'mil', 'milhão', 'milhões', 'bilhão', 'bilhões', 'trilhão', 'trilhões']
@@ -14,7 +16,10 @@ def abbreviator(element, limit):
           index = i - 5
         else:
           index = i - 4
-        element = '{:.1f} {}'.format(element, tag[index])
+        if not element.isdecimal():
+          element = '{:.0f} {}'.format(element, tag[index])
+        else:
+          element = '{:.1f} {}'.format(element, tag[index])
   else:
     while element(limit) == '':
       limit -= 1
@@ -28,3 +33,5 @@ def abbreviator(element, limit):
 
 
 print(abbreviator(number))
+
+print(abbreviator(text))
