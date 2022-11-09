@@ -10,16 +10,17 @@ tag = ['mil', 'mil', 'milhão', 'milhões', 'bilhão', 'bilhões', 'trilhão', '
 def abbreviator(element, limit):
   if element.isdigit():
     for i in range(4, len(element), 3):
-      if len(element) >= i and len(element) <= (i + 2):
-        element /= (10 ** (i - 1))
-        if element < 2:
-          index = i - 5
-        else:
-          index = i - 4
-        if not element.isdecimal():
-          element = '{:.0f} {}'.format(element, tag[index])
-        else:
-          element = '{:.1f} {}'.format(element, tag[index])
+      if len(element) != 4:
+        if len(element) >= i and len(element) <= (i + 2):
+          element /= (10 ** (i - 1))
+          if element < 2:
+            index = i - 5
+          else:
+            index = i - 4
+          if not element.isdecimal():
+            element = '{:.0f} {}'.format(element, tag[index])
+          else:
+            element = '{:.1f} {}'.format(element, tag[index])
   else:
     while element(limit) == '':
       limit -= 1
