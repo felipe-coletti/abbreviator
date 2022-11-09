@@ -14,7 +14,7 @@ def abbreviator(element, limit):
       limit -= 1
     while element(limit).isalpha and element(limit + 1):
       limit += 1
-    for i in range(limit, limit + 4):
+    for i in range(limit + 1, limit + 4):
       element[i] = '.'
     for i in range(limit + 4, len(element)):
       element.remove[i]
