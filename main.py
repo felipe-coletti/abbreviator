@@ -2,7 +2,7 @@ number = 1000
 
 limit = 500
 
-tag = ['mil', 'milhão', 'bilhão', 'trilhão']
+tag = ['mil', 'mil', 'milhão', 'milhões', 'bilhão', 'bilhões', 'trilhão', 'trilhões']
 
 
 def abbreviator(element, limit):
@@ -10,7 +10,11 @@ def abbreviator(element, limit):
     for i in range(4, len(element), 3):
       if len(element) >= i and len(element) <= (i + 2):
         element /= (10 ** (i - 1))
-        element = '{:,2f} mil'.format(element)
+        if element < 2:
+          index = i - 5
+        else:
+          index = i - 4
+        element = '{:,2f} {}'.format(element, index)
   else:
     while element(limit) == '':
       limit -= 1
