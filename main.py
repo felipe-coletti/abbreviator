@@ -4,8 +4,7 @@ text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
 
 limit = 10
 
-tag = ['mil', 'mil', 'milhão', 'milhões', 'bilhão', 'bilhões', 'trilhão', 'trilhões']
-
+tag = ['mil', 'milhão', 'bilhão', 'trilhão']
 
 def abbreviator(element, limit=10):
   element = str(element)
@@ -15,16 +14,16 @@ def abbreviator(element, limit=10):
         if len(element) >= i and len(element) <= (i + 2):
           element = int(element)
           element /= (10 ** (i - 1))
-          if element < 2:
-            index = i - 5
-          else:
-            index = i - 4
+          index = (i - 1) / 3 - 1
+          tag = tag[index]
+          if element > 1:
+            tag = tag.replace('ão', 'ões')
           if i == 4:
             index += 1
           if not str(element).isdecimal():
-            element = '{:.0f} {}'.format(element, tag[index])
+            element = '{:.0f} {}'.format(element, tag)
           else:
-            element = '{:.1f} {}'.format(element, tag[index])
+            element = '{:.1f} {}'.format(element, tag)
   else:
     if limit > len(element) - 1:
       limit = len(element) - 1
