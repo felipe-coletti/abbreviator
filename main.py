@@ -10,7 +10,7 @@ def abbreviator(element, limit=10):
     for i in range(4, len(element) + 1, 3):
       if i != 4:
         if len(element) >= i and len(element) <= (i + 2):
-          element = int(element)
+          element = float(element)
           element /= (10 ** (i - 1))
           index = (i - 1) / 3 - 1
           tag = tag[index]
